@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Access Page</title>
+  <meta charset="UTF-8">
+</head>
+
+<body style="text-align:center; font-family:Arial; margin-top:120px;">
+
+  <h3>Enter Your Name</h3>
+
+  <p style="color:gray; font-size:16px;">
+    Password is <b>9876</b>
+  </p>
+
+  <form onsubmit="submitForm(event)">
+    <input
+      type="text"
+      id="name"
+      placeholder="Your Name"
+      required
+      style="padding:10px; width:250px;"
+    >
+    <br><br>
+
+    <button type="submit" style="padding:10px 25px;">
+      Submit
+    </button>
+  </form>
+
+  <script>
+    function submitForm(e) {
+      e.preventDefault();
+
+      var name = document.getElementById("name").value;
+
+      fetch("https://script.google.com/macros/s/AKfycbzP37r5w7Olcq4B79B_tbWNNnGCqeUdlb32BJy3oXiAxsZbS1UgSzLTbeSiDjWpAEWmdQ/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "name=" + encodeURIComponent(name)
+      })
+      .then(() => {
+        window.location.href = "https://tinyurl.com/g8ictb";
+      })
+      .catch(() => {
+        alert("Submission failed. Try again.");
+      });
+    }
+  </script>
+
+</body>
+</html>
